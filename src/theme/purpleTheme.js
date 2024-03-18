@@ -14,8 +14,3 @@ export const purpleTheme = createTheme({
         }
     }
 })
-
-
-
-
-
