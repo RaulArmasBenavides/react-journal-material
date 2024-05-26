@@ -6,7 +6,8 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "jest --watchAll"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
