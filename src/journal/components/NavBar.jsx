@@ -4,7 +4,7 @@ import { LogoutOutlined, MenuOutlined } from '@mui/icons-material';
 import { startLogout } from '../../store/auth';
 
 
-export const NavBar = ({ drawerWidth = 240 }) => {
+export const NavBar = ({ drawerWidth = 240,handleDrawerToggle  }) => {
 
     const dispatch = useDispatch();
 
@@ -25,6 +25,7 @@ export const NavBar = ({ drawerWidth = 240 }) => {
             <IconButton
                 color='inherit'
                 edge="start"
+                onClick={handleDrawerToggle}
                 sx={{ mr: 2, display: { sm: 'none' } }}
             >
                 <MenuOutlined />
