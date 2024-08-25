@@ -11,3 +11,4 @@ export const JournalRoutes = () => {
     </Routes>
   )
 }
+export default JournalRoutes;
