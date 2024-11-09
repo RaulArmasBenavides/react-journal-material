@@ -2,6 +2,7 @@ import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIco
 import { TurnedInNot } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
 import { SideBarItem } from './';
+import PropTypes from 'prop-types';
 
 export const SideBar = ({ drawerWidth = 240 ,mobileOpen, handleDrawerToggle}) => {
 
@@ -62,3 +63,9 @@ export const SideBar = ({ drawerWidth = 240 ,mobileOpen, handleDrawerToggle}) =>
         </Box>
     )
 }
+
+SideBar.propTypes = {
+    drawerWidth: PropTypes.number,
+    mobileOpen: PropTypes.bool.isRequired,
+    handleDrawerToggle: PropTypes.func.isRequired
+};
