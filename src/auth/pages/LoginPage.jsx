@@ -1,14 +1,13 @@
-import { useMemo } from 'react';
+import { useMemo , useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material';
 import { Google } from '@mui/icons-material';
-
 import { AuthLayout } from '../layout/AuthLayout';
-
+import ReCaptchaComponent  from '../components/ReCaptchaComponent'
 import { useForm } from '../../hooks';
 import { startGoogleSignIn, startLoginWithEmailPassword } from '../../store/auth';
-
+import Swal from 'sweetalert2';
 const formData = {
   email: '',
   password: ''
@@ -18,7 +17,7 @@ const formData = {
 export const LoginPage = () => {
 
   const { status, errorMessage } = useSelector( state => state.auth );
-
+  const [captchaToken, setCaptchaToken] = useState('');
   const dispatch = useDispatch();
   const { email, password, onInputChange } = useForm(formData);
 
@@ -26,13 +25,18 @@ export const LoginPage = () => {
 
   const onSubmit = ( event ) => {
     event.preventDefault();
-
-    // console.log({ email, password })
+    if (!captchaToken) {
+       Swal.fire('Nota Por favor completa el CAPTCHA','warning');
+      return;
+    }
     dispatch( startLoginWithEmailPassword({ email, password }) );
   }
 
   const onGoogleSignIn = () => {
-    console.log('onGoogleSignIn');
+    if (!captchaToken) {
+      Swal.fire('Nota Por favor completa el CAPTCHA','warning');
+     return;
+   }
     dispatch( startGoogleSignIn() );
   }
 
@@ -109,6 +113,9 @@ export const LoginPage = () => {
               <Link component={ RouterLink } color='inherit' to="/auth/register">
                 Crear una cuenta
               </Link>
+            </Grid>
+            <Grid container direction='row' justifyContent='center'>
+              <ReCaptchaComponent onVerify={(token) => setCaptchaToken(token)} />
             </Grid>
 
           </Grid>
