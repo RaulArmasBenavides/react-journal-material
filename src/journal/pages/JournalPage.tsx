@@ -5,30 +5,24 @@ import { AddOutlined } from '@mui/icons-material';
 import { JournalLayout } from '../layout/JournalLayout';
 import { NoteView, NothingSelectedView } from '../views';
 import { startNewNote } from '../../store/journal/thunks';
+import { RootState, AppDispatch } from '../../store/store';
 
 export const JournalPage = () => {
-
-  const dispatch = useDispatch();
-  const { isSaving, active } = useSelector( state => state.journal );
+  const dispatch = useDispatch<AppDispatch>();
+  const { isSaving, active } = useSelector((state: RootState) => state.journal);
 
   const onClickNewNote = () => {
-    dispatch( startNewNote() );
-  }
+    dispatch(startNewNote());
+  };
 
   return (
     <JournalLayout>
-      
-      {
-        (!!active)
-          ? <NoteView />
-          : <NothingSelectedView />
-      }
-
+      {!!active ? <NoteView /> : <NothingSelectedView />}
 
       <IconButton
-        onClick={ onClickNewNote }
-        size='large'
-        disabled={ isSaving }
+        onClick={onClickNewNote}
+        size="large"
+        disabled={isSaving}
         sx={{
           color: 'white',
           backgroundColor: 'error.main',
@@ -40,7 +34,6 @@ export const JournalPage = () => {
       >
         <AddOutlined sx={{ fontSize: 30 }} />
       </IconButton>
-
     </JournalLayout>
-  )
-}
+  );
+};

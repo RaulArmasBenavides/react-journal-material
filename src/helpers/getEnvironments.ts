@@ -1,0 +1,25 @@
+interface Environment {
+  VITE_APIKEY: string;
+  VITE_AUTHDOMAIN: string;
+  VITE_DATABASEURL: string;
+  VITE_PROJECTID: string;
+  VITE_STORAGEBUCKET: string;
+  VITE_MESSAGINGSENDERID: string;
+  VITE_APPID: string;
+  VITE_CLOUD_URL_BINARY: string;
+  VITE_CLOUDINARY_URL: string;
+  VITE_CLOUDINARY_UPLOAD_PRESET: string;
+}
+
+export const getEnvironments = (): Environment => ({
+  VITE_APIKEY: import.meta.env.VITE_APIKEY,
+  VITE_AUTHDOMAIN: import.meta.env.VITE_AUTHDOMAIN,
+  VITE_DATABASEURL: import.meta.env.VITE_DATABASEURL,
+  VITE_PROJECTID: import.meta.env.VITE_PROJECTID,
+  VITE_STORAGEBUCKET: import.meta.env.VITE_STORAGEBUCKET,
+  VITE_MESSAGINGSENDERID: import.meta.env.VITE_MESSAGINGSENDERID,
+  VITE_APPID: import.meta.env.VITE_APPID,
+  VITE_CLOUD_URL_BINARY: import.meta.env.VITE_CLOUD_URL_BINARY,
+  VITE_CLOUDINARY_URL: import.meta.env.VITE_CLOUDINARY_URL,
+  VITE_CLOUDINARY_UPLOAD_PRESET: import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
+});

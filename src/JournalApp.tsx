@@ -4,7 +4,7 @@ import { AppTheme } from './theme';
 export const JournalApp = () => {
   return (
     <AppTheme>
-        <AppRouter />
+      <AppRouter />
     </AppTheme>
-  )
-}
+  );
+};
