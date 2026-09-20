@@ -15,13 +15,13 @@
     "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.8.0",
     "@reduxjs/toolkit": "^1.8.1",
-    "firebase": "^9.8.1",
+    "firebase": "^12.19.0",
     "journal-app": "file:",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-google-recaptcha": "^3.1.0",
     "react-redux": "^8.0.1",
-    "react-router-dom": "6",
+    "react-router-dom": "^7.18.4",
     "sweetalert2": "^11.7.28"
   },
   "devDependencies": {
@@ -38,7 +38,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "rollup-plugin-visualizer": "^5.14.0",
     "setimmediate": "^1.0.5",
-    "vite": "^2.9.18",
+    "vite": "^8.3.0",
     "whatwg-fetch": "^3.6.20"
   }
 }

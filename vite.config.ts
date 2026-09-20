@@ -7,10 +7,16 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          sweetalert: ['sweetalert2'],
-          mui: ['@mui/material', '@mui/icons-material'],
-          redux: ['@reduxjs/toolkit', 'react-redux'],
+        manualChunks: (id: string) => {
+          if (id.includes('node_modules/sweetalert2')) {
+            return 'sweetalert';
+          }
+          if (id.includes('node_modules/@mui')) {
+            return 'mui';
+          }
+          if (id.includes('node_modules/@reduxjs') || id.includes('node_modules/react-redux')) {
+            return 'redux';
+          }
         },
       },
     },
