@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "jest --watchAll"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -28,6 +30,7 @@
     "@babel/core": "^7.24.6",
     "@babel/preset-env": "^7.24.6",
     "@babel/preset-react": "^7.24.6",
+    "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^15.0.7",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
@@ -38,6 +41,8 @@
     "jest-environment-jsdom": "^29.7.0",
     "rollup-plugin-visualizer": "^5.14.0",
     "setimmediate": "^1.0.5",
+    "ts-jest": "^29.4.12",
+    "ts-node": "^10.9.2",
     "vite": "^8.3.0",
     "whatwg-fetch": "^3.6.20"
   }

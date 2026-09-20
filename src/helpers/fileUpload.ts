@@ -3,7 +3,10 @@ import { logger } from '../utils/logger';
 
 interface CloudinaryResponse {
   secure_url: string;
-  [key: string]: any;
+  public_id: string;
+  version: number;
+  width?: number;
+  height?: number;
 }
 
 export const fileUpload = async(file: File): Promise<string> => {

@@ -2,6 +2,7 @@ import { Box, Divider, Drawer, List, Toolbar, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { SideBarItem } from './SideBarItem';
 import { RootState } from '../../store/store';
+import { Note } from '../../helpers/loadNotes';
 
 interface SideBarProps {
   drawerWidth?: number;
@@ -13,7 +14,7 @@ export const SideBar = ({ drawerWidth = 240, mobileOpen, handleDrawerToggle }: S
   const { displayName } = useSelector((state: RootState) => state.auth);
   const { notes } = useSelector((state: RootState) => state.journal);
 
-  const drawerContent = (displayName: string | null, notes: any[]) => (
+  const drawerContent = (displayName: string | null, notes: Note[]) => (
     <>
       <Toolbar>
         <Typography variant="h6" noWrap component="div">

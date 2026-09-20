@@ -1,10 +1,14 @@
 type LogLevel = 'error' | 'warn' | 'info' | 'debug';
 
+interface LogData {
+  [key: string]: string | number | boolean | string[] | undefined;
+}
+
 interface LogEntry {
   timestamp: string;
   level: LogLevel;
   message: string;
-  data?: any;
+  data?: LogData;
   error?: Error;
 }
 
@@ -22,7 +26,7 @@ declare global {
 class Logger {
   private readonly isDevelopment: boolean = (import.meta.env as any).DEV ?? false;
 
-  private log(level: LogLevel, message: string, data?: any, error?: Error): void {
+  private log(level: LogLevel, message: string, data?: LogData, error?: Error): void {
     const entry: LogEntry = {
       timestamp: new Date().toISOString(),
       level,
@@ -43,19 +47,19 @@ class Logger {
     }
   }
 
-  error(message: string, error?: Error, data?: any): void {
+  error(message: string, error?: Error, data?: LogData): void {
     this.log('error', message, data, error);
   }
 
-  warn(message: string, data?: any): void {
+  warn(message: string, data?: LogData): void {
     this.log('warn', message, data);
   }
 
-  info(message: string, data?: any): void {
+  info(message: string, data?: LogData): void {
     this.log('info', message, data);
   }
 
-  debug(message: string, data?: any): void {
+  debug(message: string, data?: LogData): void {
     if (this.isDevelopment) {
       this.log('debug', message, data);
     }
@@ -66,7 +70,7 @@ class Logger {
     return `[${timestamp}] [${level.toUpperCase()}] ${message}`;
   }
 
-  private getConsoleMethod(level: LogLevel): (...args: any[]) => void {
+  private getConsoleMethod(level: LogLevel): (message: string, stack?: string) => void {
     const methods = {
       error: console.error,
       warn: console.warn,

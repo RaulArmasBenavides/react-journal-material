@@ -46,8 +46,8 @@ export const startSaveNote = () => {
 
     if (!note) return;
 
-    const noteToFireStore = { ...note };
-    delete (noteToFireStore as any).id;
+    const noteToFireStore: Omit<typeof note, 'id'> = { ...note };
+    delete (noteToFireStore as Partial<typeof note>).id;
 
     const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`);
     await setDoc(docRef, noteToFireStore, { merge: true });

@@ -1,19 +1,21 @@
 import { useEffect, useMemo, useState, ChangeEvent } from 'react';
 
-type FormValidationFunction = (value: any) => boolean;
+type FormValue = string | number | boolean;
+type FormValidationFunction = (value: FormValue) => boolean;
 type ValidationRules = Record<string, [FormValidationFunction, string]>;
 type FormValidationState = Record<string, string | null>;
+type FormState = Record<string, FormValue>;
 
-export interface UseFormReturn {
-  [key: string]: any;
-  formState: Record<string, any>;
+export interface UseFormReturn extends FormState {
+  formState: FormState;
   onInputChange: (event: ChangeEvent<HTMLInputElement>) => void;
   onResetForm: () => void;
   isFormValid: boolean;
+  [key: string]: FormValue | FormState | ((event: ChangeEvent<HTMLInputElement>) => void) | (() => void) | boolean | string | null;
 }
 
 export const useForm = (
-  initialForm: Record<string, any> = {},
+  initialForm: FormState = {},
   formValidations: ValidationRules = {}
 ): UseFormReturn => {
   const [formState, setFormState] = useState(initialForm);

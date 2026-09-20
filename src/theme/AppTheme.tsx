@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { ThemeProvider } from '@emotion/react';
-import { CssBaseline } from '@mui/material';
+import { CssBaseline, Theme } from '@mui/material';
 import { useSelector } from 'react-redux';
 
 import { purpleTheme, coralTheme, elegantGreyTheme, oliveTheme, navyTheme } from './';
@@ -8,7 +8,7 @@ import { RootState } from '../store/store';
 
 type ThemeKey = 'purple' | 'coral' | 'elegantGrey' | 'olive' | 'navy';
 
-const themes: Record<ThemeKey, any> = {
+const themes: Record<ThemeKey, Theme> = {
   purple: purpleTheme,
   coral: coralTheme,
   elegantGrey: elegantGreyTheme,

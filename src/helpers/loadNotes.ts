@@ -3,11 +3,10 @@ import { FirebaseDB } from '../firebase/config';
 
 export interface Note {
   id: string;
-  title?: string;
-  body?: string;
-  date?: number;
-  imageUrl?: string;
-  [key: string]: any;
+  title: string;
+  body: string;
+  date: number;
+  imageUrls?: string[];
 }
 
 export const loadNotes = async(uid: string = ''): Promise<Note[]> => {
